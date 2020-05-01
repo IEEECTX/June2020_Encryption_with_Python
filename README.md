@@ -1,2 +1,12 @@
-# June2020_Encryption_with_Python
-Encryption with Python 
+# IEEE CTX June 2020 Newsletter
+## Encryption using Python
+ 
+```python
+def decrp(emes):
+    t=[]
+    kk=list(emes)
+    for i in kk:
+        t.append(decr_level1[i])
+    dmes=''.join(t)
+    return dmes
+```
