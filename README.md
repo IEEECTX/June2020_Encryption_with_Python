@@ -1,27 +1,21 @@
-# Encryption and Decryption
+# Basic Encryption and Decryption using Python
 
-When we send a message over a network (any type of format), it is possible that can be captured by third party.  
+When we send a message over a network (any type of format), it is possible that it can be captured by a third party. This could be a problem if the message contains some important information such as username, password, bank information, etc. This type of communication can be seen in Figure 1 below.  
 
-Encryption is the process of converting normal message (plaintext) into meaningless message (Ciphertext). Whereas Decryption is the process of converting meaningless message (Ciphertext) into its original form (Plaintext). ... While decryption is the process of converting meaningless message into its original form.
-
-![GitHub Logo](pic/Enc011.png)
+![Communication wothout Encryption](pic/Enc011.png)
 
 <center>Figure 1. Communication without Encryption/Decryption</center>
+&nbsp;
 
-
-
-Also
-
+One way to protect the information is by using Encryption. Encryption is the process of converting a message (plaintext) into a meaningless message (ciphertext). Even if this ciphertext is captured by a third party (a culprit, etc.), it will be difficult to understand without the required information such as a decryption key. After the receiver receives the chipertext, the original message (plaintext) will be recovered using Decryption. Decryption is the process of converting a meaningless message (Ciphertext) into its original form (Plaintext). A basic communication scheme with Encryption/Decryption is shown in Figure 2 below.
 
 ![GitHub Logo](pic/Enc02.png)
 
 <center>Figure 2. Communication with Encryption/Decryption</center>
 
+&nbsp;
 
-
-
-Also
-
+A simple Encryption/Decryption example is shown in Figure 3. A user registers on a website and enters his/her information. This information will be stored in a database but it will be encrypted before stored. This will create extra protection even the database is hacked and all stored information is stolen. 
 
 ![GitHub Logo](pic/Enc03.png)
 
@@ -29,14 +23,14 @@ Also
 
 # Part I - Simple Example
 
-This section we will use all lower case characters  and numbers as the alphabet. 
+In this section, we will use all lower case characters and numbers as the alphabet.
 
 
 ```python
 plaintext='hello there agent 007.' # our plaintext
-alphabet=list('abcedfghijklmnopqrstuvwxyz .,0123456789') # original characters to use
+alphabet=list('abcedfghijklmnopqrstuvwxyz .,0123456789') # original characters 
 
-# we want to shuffle the alphabet to create our secret code
+# we want to shuffle the alphabet to create our Encryption key 
 # we use a function for that. 
 
 def mixed(x):
@@ -48,16 +42,16 @@ def mixed(x):
 shuffled=mixed(alphabet)
 
 # now we have the alphabet and shuffled version
-# we can create our Encryption and Decryption dictionary blocks
+# we can create our Encryption and Decryption keys (Python dictionaries)
 
 encr_level1 = dict(zip(alphabet, shuffled))
 decr_level1 = dict(zip(shuffled, alphabet))
 
-# plese print and analyze them (just remove # below)
+# please print and analyze them (just remove # below)
+
 
 #print(encr_level1)
 #print(decr_level1)
-
 ```
 
 
@@ -111,7 +105,7 @@ print(original_message)
 
 # Part II - All possible characters in a keyboard
 
-This section we will use all possible characters as our alphabet. This could be done easly using Python's ```string``` module. 
+In this section, we will use all possible characters as our alphabet. This could be done easily using Python's ```string``` module.
 
 
 ```python
@@ -129,27 +123,25 @@ shuffled=mixed(alphabet) # shuffles the alphabet
 encr_level1 = dict(zip(alphabet, shuffled))
 decr_level1 = dict(zip(shuffled, alphabet))
 
-# using the same functions above we can encrypt more complecated messages
+# using the same functions above we can encrypt more complicated messages
 message='Hello agent 007. The next mission: Level 3 activated #0$%# deliver'
 
 ciphertext=encrp1(message) # Encrypted message
-print(ciphertext)
+#print(ciphertext)
 
 original_message=decrp1(ciphertext)
-print(original_message)
+#print(original_message)
 
 ```
 
-    WO||c;Y!OiS;DD>l;ypO;iO^S;N6rr6ci@;vO}O|;m;YaS6}YSOL;/D+"/;LO|6}Oj
-    Hello agent 007. The next mission: Level 3 activated #0$%# deliver
+    GL^YM#MU^7^zX:0#z:Mc^%dov%^cMU0#Mp
 
 
 # Part III - More than one character to create ciphertext
 
-At this moment when we encrypt ```Hello``` for example we got our ciphertext as ```3azzm```. Whenever we use ```encr_level1``` to encode ```Hello``` we will get same  ciphertext```3azzm```. Also ```l``` will be always ```z``` and that makes it easy to crack this code. Now we will use three different characters to represent letters in the ```plaintext```.  
+At this moment when we encrypt ```Hello``` for example, we got our ciphertext as ```3azzm```. Whenever we use ```encr_level1``` to encode ```Hello``` we will get the same ciphertext```3azzm```. Also ```l``` will be always ```z``` and that makes it easy to crack this code. Now we will use three different characters to represent letters in the ```plaintext```.  
 
 For example, let's assume we have our alphabet ```['A','B','C']``` and we want to encode ```A``` as either ```S``` or ```M```, ```B``` as either ```R``` or ```T```, and ```C``` as either ```J``` or ```O```. 
-
 
 
 ```python
@@ -232,11 +224,11 @@ print(original_message)
 
 ###############
 
-Example above ```Hello``` is encoded as ```P1ňǆƦ```. If we run the aove cell we will get different ciphertext. ```Hello``` is now ```ƽ÷ǆňM``` and again ```ÿ1ňǆñ```. Also you can see that letter ```l``` is different for all cases obove. 
+The example above ```Hello``` is encoded as ```P1ňǆƦ```. If we run the above cell we will get different ciphertext. ```Hello``` is now ```ƽ÷ǆňM``` and again ```ÿ1ňǆñ```. Also, you can see that letter ```l``` is different for all cases above. 
 
 # Part IV - Using a file  
 
-Assume that you want to send a text file and want to make sure that is Encrypted. This could be also a username/password file, etc. Our file name is ```test.txt```. 
+Assume that you want to send a text file and want to make sure that it is Encrypted. This could be also a username/password file, etc. Our file name is ```test.txt```. 
 
 
 
