@@ -5,6 +5,7 @@ When we send a message over a network in any format, it is possible that it can 
 ![Communication wothout Encryption](pic/Enc011.png)
 
 <center>Figure 1. Communication without Encryption/Decryption</center>
+
 &nbsp;
 
 One way to protect the information is by using encryption. Encryption is the process of converting a message (plaintext) into a meaningless message (ciphertext). Even if this ciphertext is captured by a third party (a culprit, etc.), it will be difficult to understand without the required information, such as a decryption key. After the receiver receives the ciphertext, the original message (plaintext) will be recovered using decryption. Decryption is the process of converting a meaningless message (ciphertext) back into its original form (plaintext). A basic communication scheme with encryption/decryption is shown in Figure 2 below.
